@@ -28,9 +28,9 @@
     async function getUserProfile() {
       const profile = await liff.getProfile()
       document.getElementById("pictureUrl").src = profile.pictureUrl
-      document.getElementById("userId").src = profile.userId
-      document.getElementById("displayName").src = profile.displayName
-      document.getElementById("statusMessage").src = profile.statusMessage
+      document.getElementById("userId").append(profile.userId)
+      document.getElementById("displayName").append(profile.displayName)
+      document.getElementById("statusMessage").append(profile.statusMessage)
     }
 
     function getEnvironment() {
@@ -48,7 +48,6 @@
     }
 
     async function main() {
-      alert("LIFF DEMO")
       await liff.init({ liffId: "1654916164-3dY48e6g" })
       getEnvironment()
       getUserProfile()
