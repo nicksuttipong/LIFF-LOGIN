@@ -15,25 +15,37 @@
   <p id="accessToken"><b>AccessToken:</b> </p>
     <hr>
 
+  <div id="Profile">
     <h1>Profile</h1>
-  <img id="pictureUrl">
-  <p id="userId"><b>userId:</b> </p>
-  <p id="displayName"><b>displayName:</b> </p>
-  <p id="statusMessage"><b>statusMessage:</b> </p>
-  <p id="decodedIDToken"><b>email:</b> </p>
+    <img id="pictureUrl">
+    <p id="userId"><b>userId:</b> </p>
+    <p id="displayName"><b>displayName:</b> </p>
+    <p id="statusMessage"><b>statusMessage:</b> </p>
+    <p id="decodedIDToken"><b>email:</b> </p>
+</div>
 
-  <!-- <script src="https://static.line-scdn.net/liff/edge/versions/2.4.0/sdk.js"></script> -->
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.4.0/sdk.js"></script>
   <script>
     async function getUserProfile() {
     }
 
     function getEnvironment() {
+      document.getElementById("os").append(liff.getOS());
+      document.getElementById("language").append(liff.getLanguage());
+      document.getElementById("language").append(liff.getVersion());
+      document.getElementById("language").append(liff.getAccessToken());
+      document.getElementById("language").append(liff.isInClient());
+      if(liff.isInClient()){
+        document.getElementById("Profile").style.display === "block"
+      } else {
+        document.getElementById("Profile").style.display === "none"
+      }
     }
 
     async function main() {
       alert("LIFF DEMO")
-      await liff.init({ liffId: "YOUR-LIFF-ID" })
-      // getEnvironment()
+      await liff.init({ liffId: "1654916164-3dY48e6g" })
+      getEnvironment()
       // getUserProfile()
       // getContext()
       // getFriendship()
