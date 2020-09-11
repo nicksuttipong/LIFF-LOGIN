@@ -21,12 +21,16 @@
     <p id="userId"><b>userId:</b> </p>
     <p id="displayName"><b>displayName:</b> </p>
     <p id="statusMessage"><b>statusMessage:</b> </p>
-    <p id="decodedIDToken"><b>email:</b> </p>
 </div>
 
   <script src="https://static.line-scdn.net/liff/edge/versions/2.4.0/sdk.js"></script>
   <script>
     async function getUserProfile() {
+      const profile = await liff.getProfile()
+      document.getElementById("pictureUrl").src = profile.pictureUrl
+      document.getElementById("userId").src = profile.userId
+      document.getElementById("displayName").src = profile.displayName
+      document.getElementById("statusMessage").src = profile.statusMessage
     }
 
     function getEnvironment() {
@@ -47,7 +51,7 @@
       alert("LIFF DEMO")
       await liff.init({ liffId: "1654916164-3dY48e6g" })
       getEnvironment()
-      // getUserProfile()
+      getUserProfile()
       // getContext()
       // getFriendship()
       // createUniversalLink()
